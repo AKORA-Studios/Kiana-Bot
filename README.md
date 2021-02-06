@@ -3,7 +3,6 @@
 
  ![image1](https://cdn.discordapp.com/attachments/753474862693089300/807617649823055882/unknown.png)
 
-***
 
 ## Comamnds
 | Module        | Commands       
@@ -20,7 +19,9 @@
 
 ## Run
 1. Fill out the config.json file, and your moongose conenction link in index.js
-Example Config Setup:
+
+Example Config Setup
+
 ```
 {
     "owner": [
@@ -33,7 +34,9 @@ Example Config Setup:
     "supportinvite": "https://discord.gg/Emk2udJ",
 }
 ```
+
 Example Mongoose Connection
+
 ```Javascript
 mongoose.connect('mongodb://localhost:27017/kiana?gssapiServiceName=mongodb', {
     useNewUrlParser: true,
@@ -48,12 +51,16 @@ mongoose.connect('mongodb://localhost:27017/kiana?gssapiServiceName=mongodb', {
 
 ```
 2. All emojis probably wouldn´t work because their are custom emotes. Fill in your emotes in utilities.js if you want them to work lol
+
 You could get their name by writing backslash + emote 
+
 Example:
 ```
 \✨
 ```
+
 Example Emote Setup:
+
 ```Javascript
 const emotes = {
     false: "<:false:740942401413185656>",
@@ -67,8 +74,10 @@ const emotes = {
     ban: "<:ban:805904813409697843>"
 }
 ```
+
 3. You could change the bot status, by changing activities in resources/activities.json
 Example Actibvity setup:
+
 ```
 {
     "Testing new Stuff": "PLAYING",
@@ -87,7 +96,6 @@ node index.js
 ```
 npm i
 ```
-
 ## Dependencies
         "akaneko": "^3.3.0",
         "animequote": "^1.1.1",
