@@ -5,7 +5,7 @@ const Emojis = {
     info: "📁  ",
     configuration: "🚧  ",
     economy: "💰  ",
-    fun: `${emotes.fun}  `,
+    fun: `:tada: `,
     gifs: "💮  ",
     contact: "✉️  ",
     nsfw: "🍑  ",

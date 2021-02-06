@@ -38,7 +38,7 @@ client.on("guildCreate", async guild => {
     emb.setAuthor(guild.name, guild.iconURL() ? guild.iconURL() : client.user.avatarURL())
         .setTimestamp()
         .setImage(client.config.image)
-        .setFooter(client.user.tag, msg.client.user.avatarURL())
+        .setFooter(client.user.tag, client.user.avatarURL())
         .setDescription(`Thanks for adding me to your server UwU\nType **+help** to see my Commands\nUse **+bug** to report errors`)
         .addField("\u200B", `Need help? Visit my [support server](${client.config.supportinvite})^^`)
     defaultChannel.send(emb).catch()
