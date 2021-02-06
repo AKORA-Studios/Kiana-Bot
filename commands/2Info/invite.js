@@ -5,7 +5,7 @@ module.exports = {
     name: 'invite',
     syntax: 'invite',
     args: false,
-    type: 'Contact',
+    type: 'Info',
     description: 'Gives you my Contact Data UwU',
     DmChannel: true,
     commands: ['invite', 'inv', 'link', 'support', 'vote'],

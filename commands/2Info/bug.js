@@ -5,7 +5,7 @@ module.exports = {
     name: 'bug',
     syntax: 'bug <Value>',
     args: true,
-    type: 'Contact',
+    type: 'Info',
     description: 'report bugs to my devs',
     cooldown: 10000,
     commands: ['bug', 'suggest', 'message', 'bug'],
