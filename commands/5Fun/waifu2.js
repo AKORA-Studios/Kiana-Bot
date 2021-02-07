@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors } = require('../utilities');
+const { rawEmb, colors, deatiledEmb } = require('../utilities');
 const bent = require('bent');
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb()
+        let emb = deatiledEmb(msg).setTitle(' ﾟ+*:ꔫ:*﹤　waifu2　﹥*:ꔫ:*+ﾟ')
         const getString = bent('string');
         const m = await msg.channel.send(emb.setTitle('Searching . . .').setFooter('Nekoslife Api').setTimestamp())
         try {

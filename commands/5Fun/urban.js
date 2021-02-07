@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors } = require('../utilities');
+const { rawEmb, colors, deatiledEmb } = require('../utilities');
 const urban = require('urban');
 
 
@@ -21,7 +21,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('*＊✿❀ Urban ❀✿＊*')
 
         if (!args[0]) return msg.channel.send(emb.setDescription("You must enter a search term").setColor(colors.error)).catch().catch();
         emb.setDescription("**Loading . . .** \n If this message won´t change, I found nothing qwq")
