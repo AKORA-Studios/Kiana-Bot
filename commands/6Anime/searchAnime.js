@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors, emotes } = require('../utilities');
+const { deatiledEmb, colors, emotes } = require('../utilities');
 const bent = require('bent')
 const base = ('https://kitsu.io/api/edge/anime?filter[text]=')
 
@@ -20,7 +20,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg)
         let searchParam = args.join(' ').replace(' ', '-')
         const getString = bent('string');
         let url = base + searchParam + '&page%5Blimit%5D=1&page%5Boffset%5D=0'
@@ -35,7 +35,7 @@ module.exports = {
         let anime = result.data[0].attributes
         if (!anime) return m.edit(emb.setDescription('**Not found. Please try again**').setColor(colors.error)).catch()
         emb.setAuthor(`${anime.titles.en_jp} | ${anime.showType}`, anime.posterImage.original)
-            .setTitle('URL')
+            .setTitle('*°:⋆ₓₒ　Anime Search　ₓₒ⋆:°*')
             .setURL(url)
             .setDescription(anime.synopsis.replace(/<[^>]*>/g, '').split('\n')[0])
             .addField('❯\u2000\Information', `•\u2000\**Japanese Name:** ${anime.titles.ja_jp}\n\•\u2000\**Age Rating:** ${anime.ageRating}\n\•\u2000\**NSFW:** ${anime.nsfw ? 'Yes' : 'No'}`, true)

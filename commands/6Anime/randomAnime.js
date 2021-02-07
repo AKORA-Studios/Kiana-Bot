@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors, emotes } = require('../utilities');
+const { deatiledEmb, colors, emotes } = require('../utilities');
 const bent = require('bent')
 const base = ('https://kitsu.io/api/edge/anime/')
 
@@ -21,7 +21,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg)
         let id = (Math.floor(Math.random() * (9998 - 1 + 1) + 1)).toString()
         const getString = bent('string');
         let url = base + id
@@ -37,7 +37,7 @@ module.exports = {
         if (!anime) return m.edit(emb.setDescription('**Not found. Please try again**').setColor(colors.error)).catch()
 
         emb.setAuthor(`${anime.titles.en} | ${anime.showType}`, anime.posterImage.original)
-            .setTitle('URL')
+            .setTitle('*°:⋆ₓₒ　Random Anime　ₓₒ⋆:°*')
             .setURL(url)
             .setDescription(anime.synopsis.replace(/<[^>]*>/g, '').split('\n')[0])
             .addField('❯\u2000\Information', `•\u2000\**Japanese Name:** ${anime.titles.ja_jp}\n\•\u2000\**Age Rating:** ${anime.ageRating}\n\•\u2000\**NSFW:** ${anime.nsfw ? 'Yes' : 'No'}`, true)
