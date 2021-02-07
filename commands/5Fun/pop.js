@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg);
+        let emb = rawEmb(msg).setTitle('⋆ ˚｡⋆୨୧˚ Pop ˚୨୧⋆｡˚ ⋆')
 
         let size = Number(args.length ? args[0] : 4) || 4;
         size < 2 ? size = 2 : "";
@@ -35,12 +35,12 @@ module.exports = {
         let y = Math.floor(Math.random() * size);
 
         arr[x][y] = '🧨';
-        emb.setDescription(
+        emb.setDescription('Find the POP!\n' +
             arr.map(a =>
                 a.map(v => `||${v}||`)
                     .join('')
             ).join('\n')
         )
-        msg.channel.send(emb.setTitle('Find the POP!')).catch()
+        msg.channel.send(emb).catch()
     }
 };

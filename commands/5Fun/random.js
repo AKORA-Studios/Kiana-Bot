@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb } = require('../utilities');
+const { rawEmb, deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: 'random',
@@ -16,7 +16,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('*°:⋆ₓₒ　Random　ₓₒ⋆:°*')
 
         var zahl = between(0, 100)
 
@@ -36,7 +36,6 @@ module.exports = {
             .setColor("#" + farbe)
             .addField("**User:**", `${nutzer.toString()} [${nutzer.user.tag}]`)
             .addField("**Role:**", `${role.toString()} [${role.name}]`)
-            .setTitle("Random generator")
 
         return msg.channel.send(emb).catch();
     }
