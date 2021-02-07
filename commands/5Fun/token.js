@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors } = require('../utilities');
+const { rawEmb, colors, deatiledEmb } = require('../utilities');
 const bent = require('bent')
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg).setTitle('Nani . .. ?!')
+        let emb = deatiledEmb(msg).setTitle('ˑ༄ؘ ۪۪۫۫ ▹ Nani . .. ?! ◃ ۪۪۫۫ ༄ؘ ˑ')
         const getString = bent('string');
 
         try {
