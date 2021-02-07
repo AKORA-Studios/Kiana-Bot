@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors, checkOwner } = require('../utilities');
+const { rawEmb, colors, checkOwner, deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: 'say',
@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle(' ﾟ+*:ꔫ:*﹤　Say　﹥*:ꔫ:*+ﾟ')
         const sayMessage = args.join(" ");
 
         if (checkOwner(msg.author.id)) {

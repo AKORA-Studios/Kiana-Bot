@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors } = require('../utilities');
+const { rawEmb, colors, deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: 'simprate',
@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('*°:⋆ₓₒ　Simprate　ₓₒ⋆:°*')
 
         let user;
         if (msg.mentions.users.first()) {
@@ -32,7 +32,7 @@ module.exports = {
         let percent = Math.floor((user.id / Math.pow(10, 18)) * 100);
         emb.setDescription(`**${user} is to ${percent}% a simp!**`)
 
-        emb.setTitle("Simp Rate").setThumbnail('https://media.tenor.com/images/b5cfc5d13e8640543a528c5da6412e8e/tenor.gif')
+        emb.setThumbnail('https://media.tenor.com/images/b5cfc5d13e8640543a528c5da6412e8e/tenor.gif')
         msg.channel.send(emb).catch()
     }
 };
