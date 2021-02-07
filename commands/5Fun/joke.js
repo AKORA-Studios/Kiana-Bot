@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors } = require('../utilities');
+const { rawEmb, colors, deatiledEmb } = require('../utilities');
 const bent = require('bent');
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('⋇⋆✦⋆⋇ Joke ⋇⋆✦⋆⋇')
         const getString = bent('string');
         try {
             var res = await getString("https://sv443.net/jokeapi/v2/joke/Any");

@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors } = require('../utilities');
+const { rawEmb, colors, deatiledEmb } = require('../utilities');
 const bent = require('bent');
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('☆○o。Meme 。o○☆')
         const getString = bent('string');
         try {
             var res = await getString("https://some-random-api.ml/meme");
@@ -26,7 +26,6 @@ module.exports = {
             try {
                 var json = JSON.parse(res);
                 emb.setImage(json.image)
-                    .setTitle("Meme " + json.category)
                     .setDescription(json.caption)
                     .setFooter('ID: ' + json.id)
                 msg.channel.send(emb);

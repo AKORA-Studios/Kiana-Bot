@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { colors, rawEmb } = require('../utilities');
+const { colors, rawEmb, deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: 'Dice Roll',
@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('‧͙⁺˚*･༓☾　Dice ☽༓･*˚⁺‧͙')
 
         let result_arr = [];
         let sides = 6;
@@ -59,8 +59,7 @@ module.exports = {
 
 
         if (!result) result = "invalid arguments";
-        emb.setTitle(":game_die: Result :game_die:")
-            .setFooter("Sides: " + sides + " Throws: " + count)
+        emb.setFooter("Sides: " + sides + " Throws: " + count)
             .setDescription(
                 result.length > 1024 ? "Too many characters for this embed" : result
             );

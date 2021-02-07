@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors } = require('../utilities');
+const { rawEmb, colors, deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: 'Lovecalc',
@@ -28,7 +28,7 @@ module.exports = {
 
         let percent = Math.floor(((member1.id + member2.id) / Math.pow(10, 18 * 2)) * 100);
 
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('☆*:.｡.　Lovecalc　.｡.:*☆')
         msg.channel.send(emb.setTitle("**💖 LoveCalc 💖**").setDescription(`${member1} 💞 **${percent}%** 💞 ${member2}`)).catch();
     }
 };
