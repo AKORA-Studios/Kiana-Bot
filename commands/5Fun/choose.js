@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors, checkOwner } = require('../utilities');
+const { rawEmb, colors, checkOwner, deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: 'choose',
@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg)
         const randomNumber = Math.floor(Math.random() * (args.length - 0) + 0);
 
         let choosenOption = `**#${randomNumber + 1}**\n ${args[randomNumber]}`

@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb } = require('../utilities');
+const { deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: '8-Ball',
@@ -18,7 +18,7 @@ module.exports = {
      */
     async execute(msg, args) {
         let text = args.join(" ")
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('☆*:.｡.　8ball　.｡.:*☆')
         if (text.endsWith('?')) text += '?'
 
         if (text.length < 1) text = 'No Question qwq'

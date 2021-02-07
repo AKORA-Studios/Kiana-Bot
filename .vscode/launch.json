@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "address": "localhost:9229/69b38c29-9fc4-42d7-a39c-65b3f61845a3",
+            "localRoot": "${workspaceFolder}",
+            "name": "Attach on UWU",
+            "port": 9229,
+            "remoteRoot": "/public/applications/Kiana",
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
             "type": "pwa-node",
             "request": "launch",
             "name": "Launch Program",

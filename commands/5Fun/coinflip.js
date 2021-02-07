@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb } = require('../utilities');
+const { rawEmb, deatiledEmb } = require('../utilities');
 
 module.exports = {
     name: 'Coinflip',
@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('＊*•̩̩͙✩•̩̩͙*˚ Coinflip ˚*•̩̩͙✩•̩̩͙*˚＊')
         function englisch() {
             var rand = ["Head!", "Number!"];
             return rand[Math.floor(Math.random() * rand.length)];
