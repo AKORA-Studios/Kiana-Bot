@@ -1,5 +1,5 @@
 const { Message } = require('discord.js');
-const { rawEmb, colors, emotes } = require('../utilities');
+const { deatiledEmb, colors, emotes } = require('../utilities');
 const aq = require('animequote');
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
+        let emb = deatiledEmb(msg).setTitle('♥*♡∞:｡.｡ Animequote ｡.｡:∞♡*♥')
         let quote = aq()
 
         emb.setDescription(quote.quotesentence)

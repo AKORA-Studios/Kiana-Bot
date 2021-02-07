@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg).setTitle("Weeb Rate")
+        let emb = rawEmb(msg).setTitle("*°:⋆ₓₒ Weeb Rate ₓₒ⋆:°*")
 
         let user;
         if (msg.mentions.users.first()) {
@@ -32,11 +32,11 @@ module.exports = {
         let percent = Math.floor((user.id / Math.pow(10, 18)) * 100);
 
         if (checkOwner(msg.author.id)) {
-            emb.setDescription(`${emotes.kanna} **${user} is to 110% Weeb UwU**`)
+            emb.setDescription(`${emotes.kanna} **${user} is to 110% a Weeb UwU**`)
             return msg.channel.send(emb).catch()
         }
 
-        emb.setDescription(`**${user} is to ${percent}% Weeb OvO**`)
+        emb.setDescription(`**${user} is to ${percent}% a Weeb OvO**`)
         return msg.channel.send(emb).catch()
     }
 };

@@ -1,5 +1,5 @@
 const client = require('../index')
-const { colors, rawEmb, calcLevel, emotes, checkOwner } = require("../commands/utilities")
+const { colors, rawEmb, calcLevel, emotes, checkOwner, deatiledEmb } = require("../commands/utilities")
 const fs = require("fs");
 const { join } = require('path');
 
@@ -13,39 +13,29 @@ const { list } = require('../resources/blacklist.json')
 const afkMember = new Map
 client.afkMember = afkMember;
 
-client.on('levelup', async (message, me, ch, neu) => {
+client.on('levelup', async (message, ch, neu) => {
     if (me) {
-        me = me.replace(/%level%/i, calcLevel(neu))
-            .replace(/%user%/i, message.member.toString())
-            .replace(/%server%/i, message.guild.name);
-
-        let emb = rawEmb().setTitle(message.guild.name).setDescription(me)
-            .addField('\u200B', ':tada: Levelup :tada:').setFooter(message.member.displayName).setTimestamp()
-
         let channel;
         ch ? channel = message.guild.channels.resolve(ch) : channel = message.channel;
 
         if (!channel) return;
         let atach = await levelupCard(message.member, calcLevel(neu))
-        channel.send([emb, atach]).catch()
-        //  channel.send(emb).catch()
+        channel.send(atach).catch()
     }
 })
 
-//client.on("debug", console.log)
-//client.on("webhookUpdate", console.log)
 client.on("warn", console.log)
 client.on("message", async message => {
     if (message.author.bot) return;
     if (list.includes(message.author.id)) return
-    var emb = rawEmb()
+    var emb = deatiledEmb(message)
     //if (client.config.owner.includes(message.author.id)) return client.emit('levelup', message, 'eerewr', message.channel.id, 4000);
     let settings;
 
     if (message.channel.type == 'dm') {
         settings = {
             autoQuote: true,
-            prefix: '+'
+            prefix: '--'
         }
 
     } else {
@@ -77,11 +67,10 @@ client.on("message", async message => {
             let zzzz = await client.database.UserConfigCache.addXP(message.author.id, message.content.length);
             let neu = (await client.database.UserConfigCache.getConfig(message.author.id)).xp;
 
-            let ch = settings.xpChannel,
-                me = settings.xpMessage;
+            let ch = settings.xpChannel
 
             if (calcLevel(neu) > calcLevel(old)) {
-                client.emit('levelup', message, me, ch, neu);
+                client.emit('levelup', message, ch, neu);
             }
         }
     }
@@ -144,46 +133,27 @@ client.on("message", async message => {
     //==================================================================================================================================================
     //Client Mentioned 
     //==================================================================================================================================================
-    const clientMention = `<@!${client.user.id}>`
-
-    if (!message.content.startsWith(prefix)) {
-        if (message.content.startsWith(clientMention)) {
-            prefix = clientMention
-            message.mentions.users.delete(client.user.id)
-            message.mentions.members.delete(client.user.id)
-        }
-    }
-    //==================================================================================================================================================
-    //Spam detection
-    //==================================================================================================================================================
-    if (settings.autoMod) {
-        var spamArr = client.spammingCollection.get(message.author.id);
-        var spamContent = message.content.toLowerCase();
-
-        if (spamArr) {
-            spamArr.push(spamContent);
+    const clientMention = new RegExp(`<@!?${client.user.id}>`, 'g');
+    var len = prefix.length, cont = message.content;
+    if (!cont.startsWith(prefix)) {
+        if (cont.match(clientMention)) {
+            len = cont.indexOf('>') + 1;
+            try { message.mentions.users.delete(client.user.id) } catch (er) { }
+            try { message.mentions.members.delete(client.user.id) } catch (er) { }
         } else {
-            spamArr = new Array();
-        }
-
-        if (!spamArr.find(m => m === spamContent)) spamArr = new Array();
-        client.spammingCollection.set(message.author.id, spamArr);
-
-        if (spamArr.length > 3) {
-            message.channel.send(emb.setDescription("Stawwwwp Spamming qwq"))
-            client.spammingCollection.set(message.author.id, new Array());
+            return
         }
     }
     //==================================================================================================================================================
     //Start with prefix
     //==================================================================================================================================================
-    if (!message.content.startsWith(prefix)) return;
-    const args = message.content.slice(prefix.length).split(/ +/);
-
+    const args = message.content.slice(len).split(/ +/);
     const commandName = args.shift().toLowerCase();
-    if (!commandName) {
-        message.channel.send(`My Prefix for this Server is \`${settings.prefix}\` & ${clientMention}`).catch()
-    }
+
+    if (!commandName && message.content.match(clientMention))
+        message.channel.send(`My Prefix for this Server is \`${settings.prefix}\` and <@${client.user.id}>`).catch()
+
+
     const commandObj = client.commands.find(cmd => cmd.command.commands.includes(commandName));
     if (!commandObj) return;
     const { command } = commandObj;
@@ -197,12 +167,9 @@ client.on("message", async message => {
 
     if (message.channel.type == 'dm') {
         if (!command.DmChannel) return message.channel.send(emb.setDescription('This comamnd can´t be executed in dm Channels').setColor(colors.error)).catch()
-        commandNeeded = undefined
+        commandNeeded = []
         command.perm = []
     } else {
-        target = settings.teamRole;
-        if (target) role = message.guild.roles.cache.get(target);
-
         if (!(message.channel.permissionsFor(message.guild.me)).has('EMBED_LINKS')) {
             return message.channel.send('⚠️ I need rights to send Embeds, to work correctly ⚠️').catch()
         }
@@ -248,7 +215,7 @@ client.on("message", async message => {
                 emb.setDescription("⚠️ **You are not my** `Developer` **qwq**")
                 return message.channel.send(emb.setColor(colors.error)).catch();
             }
-        } else if (FailedUserPErmissions.length > 0 && !message.member.roles.cache.has(role) && !config.owner.includes(message.author.id)) {
+        } else if (FailedUserPErmissions.length > 0 && !config.owner.includes(message.author.id)) {
             emb.setDescription("⚠️ **You are missing following permission:** `" + FailedUserPErmissions.join(', ') + "`")
             return message.channel.send(emb.setColor(colors.error)).catch();
         }
@@ -264,9 +231,6 @@ client.on("message", async message => {
         }
         return message.channel.send(emb).catch();
     }
-
-
-
 
     if (!cooldowns.has(command.name)) {
         cooldowns.set(command.name, new Collection());
