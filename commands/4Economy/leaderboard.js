@@ -16,7 +16,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy)
+        let emb = deatiledEmb(msg)
 
         if (args[0] == "coins") {
             emb.setTitle(".•☆ Leaderbboard coins ☆•.")
