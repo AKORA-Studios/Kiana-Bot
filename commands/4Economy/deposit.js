@@ -15,7 +15,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setTitle("Deposit").setColor(colors.economy)
+        let emb = deatiledEmb(msg).setTitle("Deposit")
         let Profile = await msg.client.database.UserConfigCache.getConfig(msg.author.id)
 
         let amount = parseInt(args[0])

@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy)
+        let emb = deatiledEmb(msg)
 
         var Lose = [
             'The store`s surveillance camera had amazingly good resolution, you could be seen stealing in 4k',
