@@ -17,6 +17,8 @@ const colors = {
     unimportant: 0x738F8A //hellgrau
 }
 
+const randomColors = [0xb3c2fa, 0xdbb4fa, 0xfab4e3, 0xfab4b4, 0xb4fae7, 0xbcfab4, 0xfad18e, 0xf9fa8e]
+
 const emotes = {
     false: "<:false:740942401413185656>",
     true: "<:true:740942401161527426>",
@@ -127,65 +129,13 @@ const confirmAction = (msg, text, confim, cancel) => {
     });
 }
 
-const marry = (msg, id, text, confim, cancel) => {
-    var emb = rawEmb(msg);
-    emb.setTitle('Confirmed').setDescription(text)
-
-    msg.channel.send(emb).then(async message => {
-
-        const filter = (reaction, user) => {
-            return (reaction.emoji.name == '✅' ||
-                reaction.emoji.name === '❌') &&
-                user.id == id;
-        };
-        const collector = message.createReactionCollector(filter, { time: 5000 });
-
-        message.react('✅');
-        message.react('❌');
-
-        collector.on('collect', (reaction, user) => {
-            reaction.remove().catch();
-
-            switch (reaction.emoji.name) {
-                case '✅':
-                    emb.setTitle('Confirmed uwu');
-                    emb.setColor(colors.success);
-                    message.edit(emb).then(m => {
-                        confim(m);
-                    });
-                    collector.removeAllListeners();
-                    break;
-                case '❌':
-                    emb.setTitle('Canceled qwq');
-                    emb.setColor(colors.error);
-                    message.edit(emb).then(m => {
-                        cancel(m);
-                    });
-                    collector.removeAllListeners();
-                    break;
-                default:
-                    reaction.remove().then().catch();
-                    break;
-            }
-        });
-
-        collector.on('end', collected => {
-            emb.setTitle('Canceled qwq');
-            emb.setColor(colors.error);
-            message.edit(emb).then(m => {
-                cancel(m);
-            });
-        });
-    });
-}
-
 /**
  * @param {Message} msg 
  * @returns {MessageEmbed} a not-clean Embed
  */
 const deatiledEmb = (msg) => {
     return new MessageEmbed()
-        .setColor(colors.info)
+        .setColor(randomColors[Math.floor(Math.random() * randomColors.length)])
         .setFooter(msg.client.user.tag, msg.client.user.displayAvatarURL())
         .setAuthor(msg.author.tag, msg.author.avatarURL())
         .setTimestamp();
@@ -323,4 +273,4 @@ async function getAnswer(msg, question, time) {
     });
 }
 
-module.exports = { colors, confirmAction, deatiledEmb, marry, rawEmb, ping, emotes, getStats, calcLevel, levelToXP, money, getAnswer, checkOwner, getConfiguration };
+module.exports = { colors, confirmAction, deatiledEmb, rawEmb, ping, emotes, getStats, calcLevel, levelToXP, money, getAnswer, checkOwner, getConfiguration };

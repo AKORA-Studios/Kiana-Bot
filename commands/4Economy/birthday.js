@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy)
+        let emb = deatiledEmb(msg)
         let datum = args[0];
 
         let profile = await msg.client.database.UserConfigCache.getConfig(msg.author.id)

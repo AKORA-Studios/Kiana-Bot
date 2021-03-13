@@ -16,7 +16,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy).setTitle("Rob >.>")
+        let emb = deatiledEmb(msg).setTitle("Rob >.>")
 
         var Loose = [
             'The victim caught you going through his bag',
