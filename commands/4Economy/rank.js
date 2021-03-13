@@ -16,7 +16,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy)
+        let emb = deatiledEmb(msg)
 
         let us;
         if (msg.mentions.members.first()) {

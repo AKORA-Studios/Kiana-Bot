@@ -18,7 +18,7 @@ module.exports = {
      */
     async execute(msg, args) {
         let win = false;
-        let emb = deatiledEmb(msg).setColor(colors.economy).setTitle(`.•☆ Slots ☆•.`)
+        let emb = deatiledEmb(msg).setTitle(`.•☆ Slots ☆•.`)
         let profile = await msg.client.database.UserConfigCache.getConfig(msg.author.id)
 
         let amount = parseInt(args[0])
