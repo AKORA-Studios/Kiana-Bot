@@ -17,7 +17,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy)
+        let emb = deatiledEmb(msg)
         let now = Date.now();
 
         let profile = await msg.client.database.UserConfigCache.getConfig(msg.author.id)
@@ -50,7 +50,7 @@ module.exports = {
         const timeString = segments.join('\n');
 
         if (cooldown - (now - lastWork) > 0) {
-            emb.setColor(colors.economy)
+            emb
                 .setDescription(`**${timeString}**`)
             emb.setTitle("You have to wait ;-;")
             return msg.channel.send(emb).catch()

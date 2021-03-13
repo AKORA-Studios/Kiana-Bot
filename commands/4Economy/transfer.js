@@ -16,7 +16,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy)
+        let emb = deatiledEmb(msg)
 
         if (msg.mentions.members.first()) { user = msg.mentions.members.first().user }
         if (!user) return msg.channel.send(emb.setColor(colors.error).setDescription("Please enter a user")).catch()

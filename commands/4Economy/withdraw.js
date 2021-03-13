@@ -16,7 +16,7 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = deatiledEmb(msg).setColor(colors.economy).setTitle("Withdraw")
+        let emb = deatiledEmb(msg).setTitle("Withdraw")
 
         let Profile = await msg.client.database.UserConfigCache.getConfig(msg.author.id)
 
