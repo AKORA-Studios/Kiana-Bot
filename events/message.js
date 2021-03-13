@@ -162,7 +162,7 @@ client.on("message", async message => {
         role;
 
     if (command.commands.includes("reload") && client.config.owner.includes(message.author.id)) {
-        return reloadModules('*', message);
+        return reloadModules(message);
     }
 
     if (message.channel.type == 'dm') {
@@ -262,8 +262,8 @@ client.on("message", async message => {
  * @param {string} argument
  * @param {Message} msg
  */
-const reloadModules = async function (argument, msg) {
-    let emb = rawEmb()
+const reloadModules = async function (msg) {
+    let emb = deatiledEmb(msg)
     var root = join(__dirname, "..", "commands");
     console.log(root);
 
@@ -295,7 +295,7 @@ const reloadModules = async function (argument, msg) {
             }
         }
     }
-    emb.setDescription("**Reloaded** `" + module_count + "` **commands uwu**")
+    emb.setDescription("**Reloaded** `" + module_count + "` **commands UwU**")
     msg.edit(emb);
 }
 

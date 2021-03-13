@@ -2,9 +2,7 @@ const { Message, MessageEmbed } = require("discord.js");
 const fs = require("fs")
 const config = require("../config.json")
 
-const fetch = require("node-fetch");
 const bent = require('bent');
-const urban = require("urban");
 const getString = bent('string');
 
 const colors = {
@@ -222,55 +220,5 @@ const ping = async (address) => {
     }
 }
 
-/**
- * @param {Message} msg  Message
- * @param {string} question Question?
- * @param {number} time Time in seconds
- */
-async function getAnswer(msg, question, time) {
-    return new Promise(async (resolve, reject) => {
-        const channel = msg.channel;
-        let emb = rawEmb(msg);
 
-        await msg.channel.send(emb.setTitle(question).setColor(colors.info).setFooter("cancel, to abort | " + time + " Seconds to answer"));
-        emb = rawEmb(msg);
-
-        const collector = channel.createMessageCollector(m => m.author.id === msg.author.id, {
-            max: 1,
-            time: time * 1000,
-            errors: ['time']
-        });
-
-        collector.on("collect",
-            /** @param {Message} m  */
-            m => {
-                const cont = m.content;
-
-                if (cont === "" || !cont) {
-                    msg.channel.send(emb.setTitle("Empty Message").setColor(colors.error)).then(() => {
-                        reject("Empty Message Send");
-                    }).catch((e) => {
-                        reject("Couldnt Send Message\n" + e);
-                    });
-                } else if (cont.toLowerCase().includes("cancel")) {
-                    msg.channel.send(emb.setTitle("Canceld").setColor(colors.error)).then(() => {
-                        reject("Action Canceld");
-                    }).catch((e) => {
-                        reject("Couldnt Send Message\n" + e);
-                    });
-                } else { resolve(cont) }
-            })
-
-        collector.on("end", (collected) => {
-            if (collected.size > 0) return; //Falls schon ne antwort kam
-
-            msg.channel.send(emb.setTitle("Time Expired").setColor(colors.error)).then(() => {
-                reject("Time expired");
-            }).catch((e) => {
-                reject("Couldnt Send Message\n" + e);
-            });
-        });
-    });
-}
-
-module.exports = { colors, confirmAction, deatiledEmb, rawEmb, ping, emotes, getStats, calcLevel, levelToXP, money, getAnswer, checkOwner, getConfiguration };
+module.exports = { colors, confirmAction, deatiledEmb, rawEmb, ping, emotes, getStats, calcLevel, levelToXP, money, checkOwner, getConfiguration };

@@ -34,7 +34,7 @@ module.exports = {
         emb.addField("**Name:**", channel, true)
             .addField("**ID:**", channel.id, true);
 
-        emb.addField(`**Categorie:**`, channel.parentID ? ` <#${channel.parentID}>` : `Unkategorisiert`, true);
+        emb.addField(`**Categorie:**`, channel.parentID ? ` <#${channel.parentID}>` : `Uncategorisied`, true);
 
         emb.addField("**Type:**", channel.type, true)
             .setFooter("Created at: " + channel.createdAt.toUTCString().substr(0, 16))

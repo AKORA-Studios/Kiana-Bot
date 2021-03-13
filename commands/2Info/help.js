@@ -61,7 +61,7 @@ module.exports = {
 
         let conf = getConfiguration()
         let link = "https://discord.com/api/oauth2/authorize?client_id=" + msg.client.user.id + "&permissions=8&scope=bot"
-        emb.addField("\u200B", `[Bot Invite](${link}) • [Vote Link](${conf.vote}) • [Support Server](${conf.supportinvite})`)
+        emb.addField("\u200B", `[Bot Invite](${link}) • [Support Server](${conf.supportinvite})`)
         msg.channel.send(emb).catch();
     }
 };
@@ -91,7 +91,7 @@ function getModules(msg) {
             moduleObjekt.text += commands.map(v => `${v.commands[0]}`).join(', ')
             moduleObjekt.text += '\`\`\`'
         }
-        moduleObjekt.name = `${Emojis[prop]}**${mod}**`
+        moduleObjekt.name = `.•☆ ${mod} ☆•.`
         ModuleArray.push(moduleObjekt)
     }
     a -= 1

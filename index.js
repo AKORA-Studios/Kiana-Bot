@@ -98,7 +98,7 @@ client.on("ready", async () => {
     await start(client);
     console.log(" >  Logged in as: " + client.user.tag + " At: " + (new Date()).toLocaleString());
 
-    let emb = rawEmb().setDescription("**Online** \n" + new Date().toUTCString().substr(0, 22) + `\n **Guilds:** ${client.guilds.cache.size} [${(client.users.cache.size).toLocaleString()}]`)
+    let emb = rawEmb().setDescription('**Date:** ' + new Date().toUTCString().substr(0, 22) + `\n **Guilds:** ${client.guilds.cache.size} \n**Cache:** ${(client.users.cache.size).toLocaleString()}`)
     client.report_channel.send(emb).catch()
 
     setInterval(() => {
