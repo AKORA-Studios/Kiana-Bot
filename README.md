@@ -10,7 +10,7 @@
 | Moderation     | addemoji, ban, clear, kick, permissions, purge, rolecolor, setchannelnsfw, spurge, snipe, warn |
 | Info     | avatar, botinfo, update, channelinfo, emojiinfo, help, infractions, ping, rank, roleinfo, servericon, serverinfo, afk, uptime, userinfo, userpermissions, bug, invite      | 
 | Configuration | disable, emit, prefix, setgb, setlog, setnsfw, setquote, settings, setwlc, setxp      |
-| Economy     | balance, birthday, crime, daily, deposit, divorce, gamble, leaderboard, marry, monthly, profile, ranks, rob, roulett, slots, transfer, weekly, withdraw, work      | 
+| Economy     | balance, birthday, crime, daily, deposit, gamble, leaderboard, profile, ranks, rob, roulett, slots, transfer, weekly, withdraw, work      | 
 | Fun     | 8ball, calc, choose, coinflip, dice, gayrate, gecg, joke, lovecalc, meme, pop, quote, random, say, simprate, token, urban, waifu2, weeb      | 
 | Anime     | animequote, randomanime, searchanime, waifu      | 
 | Gifs     | angry, baka, bite, blush, bonk, bored, bully, confused, cringe, cry, cuddle, dance, dog, feed, glomp, goose, greeting, happy, highfive, hug, kiss, laugh, lizard, megumin, cat, nom, pat, poke, quadrat, sad, slap, sleep, smug, think, tickle, wave, wink      | 

@@ -33,20 +33,12 @@ const UserShema = new mongoose.Schema({
         type: mongoose.SchemaTypes.String,
     },
 
-
     beg: {
         type: mongoose.SchemaTypes.String,
     },
-    marry: {
-        type: mongoose.SchemaTypes.String,
-    },
+
     work: {
         type: mongoose.SchemaTypes.String,
-    },
-
-    votes: {
-        type: mongoose.SchemaTypes.Number,
-        default: 0,
     },
 })
 
