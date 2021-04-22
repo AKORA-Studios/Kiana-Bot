@@ -23,8 +23,7 @@ module.exports = {
         let victim = msg.mentions.members.first();
         if (victim.user.bot) msg.channel.send(emb.setColor(colors.error).setDescription("**Bots couldn´t recieve warnings**")).catch()
 
-        let reason = "Kein Grund angegeben"
-        if (language == "ENG") reason = "No Reason specified"
+        let reason = "No Reason specified";
 
         if (reason.length > 1024) return msg.channel.send(emb.setColor(colors.error).setDescription("The Reason shouldn´t expand 1024 characters!")).catch()
 

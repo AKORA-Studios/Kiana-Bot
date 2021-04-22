@@ -27,7 +27,6 @@ module.exports = {
             emb.setTitle("Specify a color | Red [1.5x] Black [2x] Green [15x]")
             return msg.channel.send(emb.setColor(colors.error)).catch()
         } else if (colour != "red" && colour != "black" && colour != "green") {
-            if (language == "DE") emb.setTitle("Gib eine Frabe an | Red [1.5x] Black [2x] Green [15x]")
             emb.setTitle("Specify a color | Red [1.5x] Black [2x] Green [15x]")
             return msg.channel.send(emb.setColor(colors.error)).catch()
         }
