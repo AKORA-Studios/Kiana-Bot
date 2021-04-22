@@ -28,10 +28,6 @@ module.exports = {
 
 
         guild_config.xpChannel = channel.id
-        if (value == 'current') {
-            guild_config.xpChannel = 'current'
-            neu = 'current'
-        }
         emb.setDescription('**New XP Ch:** ' + channel);
         return guild_config.save().then(() => msg.channel.send(emb));
     }

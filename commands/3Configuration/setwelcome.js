@@ -3,7 +3,7 @@ const { rawEmb, colors, emotes } = require('../utilities');
 
 module.exports = {
     name: 'setwlc',
-    syntax: 'setwlc <message|channel> <value>',
+    syntax: 'setwlc <#channel>',
     args: true,
     type: 'Configuration',
     description: 'Du kannst deine Wilkommenseintellungen hier ändern. Nutze `channel` oder `message` als Modul.',

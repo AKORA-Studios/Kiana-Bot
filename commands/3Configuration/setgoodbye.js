@@ -3,7 +3,7 @@ const { rawEmb, colors, emotes } = require('../utilities');
 
 module.exports = {
     name: 'setgb',
-    syntax: 'setgb <message|channel> <value>',
+    syntax: 'setgb <#channel>',
     args: true,
     type: 'Configuration',
     description: 'You can change your goodbye Settings here. Use `channel` or `message` as module.',
