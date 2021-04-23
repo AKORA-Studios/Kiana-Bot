@@ -1,5 +1,6 @@
 # Kiana Bot
  Powerful discord bot
+ Note: kinda deprecated, aka we don´t actually support this repos, there could be some little not perfectly working stuff qwq
 
  ![image1](https://cdn.discordapp.com/attachments/753474862693089300/807617649823055882/unknown.png)
 
