@@ -17,11 +17,10 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let xpCh
+        let xpCh;
         var GuildConfig = await msg.client.database.GuildSettingsCache.getConfig(msg.guild.id);
         let emb = rawEmb(msg)
         emb.setTitle("Server Settings [" + GuildConfig.prefix + "]")
-
 
         if (GuildConfig.xpChannel) {
             if (GuildConfig.xpChannel == 'current') {
@@ -44,7 +43,6 @@ module.exports = {
             .addField("**XP Channel:**", xpCh, true)
             .addField("**Goodbye Channel:**", GuildConfig.goodbyeChannel ? "<#" + GuildConfig.goodbyeChannel + ">" : emotes.false, true)
             .addField('Modlog', log, true)
-        //  .addField('\u200B', '\u200B', true)
         msg.channel.send(emb)
     }
 };

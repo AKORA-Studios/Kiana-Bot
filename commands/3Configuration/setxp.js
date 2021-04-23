@@ -25,8 +25,6 @@ module.exports = {
         if (!channel) return msg.channel.send(emb.setColor(colors.error).setDescription("You need to specify a channel"))
         if (channel.type !== 'text') return msg.channel.send(emb.setColor(colors.error).setDescription("You need to specify a text channel"))
 
-
-
         guild_config.xpChannel = channel.id
         emb.setDescription('**New XP Ch:** ' + channel);
         return guild_config.save().then(() => msg.channel.send(emb));

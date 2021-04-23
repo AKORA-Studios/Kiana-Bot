@@ -26,17 +26,14 @@ module.exports = {
             return msg.channel.send(emb.setColor(colors.error))
         }
 
-        let TextDE = `NSFW-Einstellungen wurden`
-        let TextENG = `NSFW-Settings are now`
-
         if (arg == "true") {
             guild_config.nsfw = true;
-            emb.setDescription(TextENG + ' **activated**')
+            emb.setDescription('NSFW-Settings are now **activated**')
             return guild_config.save().then(() => msg.channel.send(emb));
 
         } else if (arg == "false") {
             guild_config.nsfw = false;
-            emb.setDescription(TextENG + ' **deactivated**')
+            emb.setDescription('NSFW-Settings are now **deactivated**')
             return guild_config.save().then(() => msg.channel.send(emb));
         }
     }

@@ -25,6 +25,7 @@ module.exports = {
 
         let roles = msg.guild.roles.cache;
         let roles_s = "";
+
         if (roles.size > 0) {
             if (roles.size > 10) {
                 roles = roles.array().slice(0, 10);
@@ -40,19 +41,16 @@ module.exports = {
 
         let cat = g.channels.cache.filter(ch => ch.type == "category").size
         let afk = msg.guild.afkChannelID != null ? "`" + msg.guild.afkChannel.name + "`" : emotes.false
-        let kanäle = ""
+        let kanäle = "Cat.:"
+
         let animated = g.emojis.cache.filter(emoji => emoji.animated).size
-
         let em = `Animated: ${animated} \n Normal: ${g.emojis.cache.size - animated}`
-
-        kanäle += "Cat.: "
-
         kanäle += `${cat}\n ${emotes.text}${g.channels.cache.size} \n ${emotes.voice} ${voice_ch}`
+
         let bannedSize = await (await g.fetchBans()).size
-
         let emb = rawEmb(msg).setTitle(g.name)
-            .addField("**Info**", `${emotes.owner} <@${g.ownerID}>\n${emotes.ban} ${bannedSize > 0 ? bannedSize : '0'} \n AFK: ${afk}`, true)
 
+            .addField("**Info**", `${emotes.owner} <@${g.ownerID}>\n${emotes.ban} ${bannedSize > 0 ? bannedSize : '0'} \n AFK: ${afk}`, true)
             .addField("** Channel:**", kanäle, true)
             .addField("**Other:**", `:lock: ${g.verificationLevel} \n Boost: ${premium} \n :earth_asia: ${g.region}`, true)
 

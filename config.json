@@ -1,11 +1,12 @@
 {
     "owner": [
-        "ownerID",
-        "ownerID"
+        "586905336850677760",
+        "387655649934311427"
     ],
+    "blacklist": [],
     "prefix": "+",
     "topgg_token": "",
-    "token": "botToken",
+    "token": "NzI0MjcwMzM1NzUwNDM4OTgy.Xu9vUA.2cFOcvXcI4r1g3r6rYKIItwVWHQ",
     "supportinvite": "https://discord.gg/Emk2udJ",
     "vote": "topggVoteLink"
 }

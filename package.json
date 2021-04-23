@@ -24,7 +24,6 @@
         "hmtai": "^1.4.5",
         "moment": "^2.27.0",
         "mongoose": "^5.11.8",
-        "node-fetch": "^2.6.0",
         "novelcovid": "^3.0.0",
         "os-utils": "0.0.14",
         "parse-ms": "^2.1.0",

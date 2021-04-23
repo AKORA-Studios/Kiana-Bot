@@ -8,7 +8,7 @@
 | Module        | Commands       
 | ----------- |----------------------| 
 | Moderation     | addemoji, ban, clear, kick, permissions, purge, rolecolor, setchannelnsfw, spurge, snipe, warn |
-| Info     | avatar, botinfo, update, channelinfo, emojiinfo, help, infractions, ping, rank, roleinfo, servericon, serverinfo, afk, uptime, userinfo, userpermissions, bug, invite      | 
+| Info     | avatar, botinfo, channelinfo, emojiinfo, help, infractions, ping, rank, roleinfo, servericon, serverinfo, afk, uptime, userinfo, userpermissions, invite      | 
 | Configuration | disable, emit, prefix, setgb, setlog, setnsfw, setquote, settings, setwlc, setxp      |
 | Economy     | balance, birthday, crime, daily, deposit, gamble, leaderboard, profile, ranks, rob, roulett, slots, transfer, weekly, withdraw, work      | 
 | Fun     | 8ball, calc, choose, coinflip, dice, gayrate, gecg, joke, lovecalc, meme, pop, quote, random, say, simprate, token, urban, waifu2, weeb      | 
@@ -107,7 +107,6 @@ npm i
         "hmtai": "^1.4.5",
         "moment": "^2.27.0",
         "mongoose": "^5.11.8",
-        "node-fetch": "^2.6.0",
         "novelcovid": "^3.0.0",
         "parse-ms": "^2.1.0",
         "os-utils": "0.0.14",

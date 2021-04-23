@@ -23,18 +23,16 @@ module.exports = {
 
         let arg = (args.shift()).toLowerCase()
         if (arg !== "true" && arg !== "false") {
-            return msg.channel.send(emb.setColor(colors.error).setDescription("**Eingabefehler:** Please enter `true` or `false` as value"))
+            return msg.channel.send(emb.setColor(colors.error).setDescription("**Error:** Please enter `true` or `false` as value"))
         }
 
-        let TextENG = `Autoquotign is now `
-
         if (arg == "true") {
-            emb.setDescription(TextENG + '**activated**')
+            emb.setDescription('Autoquotign is now **activated**')
             guild_config.autoQuote = true
             neu = emotes.true
         }
         if (arg == "false") {
-            emb.setDescription(TextENG + '**deactivated**')
+            emb.setDescription('Autoquotign is now **deactivated**')
             guild_config.autoQuote = false
             neu = emotes.false
         }

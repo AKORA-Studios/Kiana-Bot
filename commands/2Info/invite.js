@@ -25,7 +25,6 @@ module.exports = {
             .addField("**Bot-Invite**", `[Klick](${link})`)
             .addField("**Support Server**", `[Klick](${conf.supportinvite})`)
             .setImage(msg.client.config.image)
-            //    .addField("**Neko Dev Hood**", `[Klick](${conf.nekoinvite})`)
             .addField("**Vote**", `[Klick](${conf.vote})`)
         msg.channel.send(emb).catch();
     }
