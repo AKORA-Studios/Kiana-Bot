@@ -26,7 +26,7 @@ module.exports = {
         let cooldown = 7.2e+6;
         let time = ms(cooldown - (now - lastWork))
 
-        eng = [
+        let answerArray = [
             "You support the developers in their work by making them tea",
             "You take care of a few animals at the shelter and get a little money for it",
             "You give blood and get a small expense allowance",
@@ -34,7 +34,7 @@ module.exports = {
             "You play music in the street and some people throw money at you"
         ]
 
-        var text = eng[Math.floor(Math.random() * eng.length)];
+        var text = answerArray[Math.floor(Math.random() * answerArray.length)];
         var amount = Math.floor(Math.random() * (160 - 20) + 20)
 
         if (!lastWork) {

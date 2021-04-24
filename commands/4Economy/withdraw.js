@@ -17,7 +17,6 @@ module.exports = {
      */
     async execute(msg, args) {
         let emb = deatiledEmb(msg).setTitle("Withdraw")
-
         let Profile = await msg.client.database.UserConfigCache.getConfig(msg.author.id)
 
         let amount = parseInt(args[0])

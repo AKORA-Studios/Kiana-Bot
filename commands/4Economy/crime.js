@@ -19,7 +19,7 @@ module.exports = {
     async execute(msg, args) {
         let emb = deatiledEmb(msg)
 
-        var Lose = [
+        var Loose = [
             'The store`s surveillance camera had amazingly good resolution, you could be seen stealing in 4k',
             'You have cleaned up the street signs of your town, shame on you, they are simply bought new when they are too dirty',
             'You had the safety vest in the trunk of your car, this is forbidden',
@@ -32,9 +32,7 @@ module.exports = {
             'God spares you and forgives your sin'
         ]
 
-
         let Profile = await msg.client.database.UserConfigCache.getConfig(msg.author.id)
-
         let chance = Math.floor(Math.random() * (4 - 1) + 1)
         let paid = Math.floor(Math.random() * (200 - 30) + 20)
 
@@ -46,7 +44,7 @@ module.exports = {
             await Profile.save()
             return msg.channel.send(emb.setDescription(`**[+${paid}¥]** ` + text).setColor(colors.success)).catch()
         } else {
-            var text = Lose[Math.floor(Math.random() * Lose.length)];
+            var text = Loose[Math.floor(Math.random() * Loose.length)];
             Profile.wallet -= paid;
             await Profile.save()
             return msg.channel.send(emb.setDescription(`**[-${paid}¥]** ` + text).setColor(colors.error)).catch()

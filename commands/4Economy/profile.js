@@ -17,11 +17,7 @@ module.exports = {
      */
     async execute(msg, args) {
         let emb = deatiledEmb(msg)
-        let user;
-        if (msg.mentions.users.first()) {
-            user = msg.mentions.users.first();
-        } else { user = msg.author; }
-
+        let user = msg.mentions.users.first() || msg.author
         if (user.bot) return msg.channel.send(emb.setColor(colors.error).setTitle("Bots do not have profiles")).catch()
 
         let profile = await msg.client.database.UserConfigCache.getConfig(user.id),

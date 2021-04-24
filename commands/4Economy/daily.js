@@ -39,10 +39,8 @@ module.exports = {
         const timeString = segments.join('\n');
 
         if (cooldown - (now - lastDaily) > 0) {
-            emb
-                .setDescription(`**${timeString}**`)
+            emb.setDescription(`**${timeString}**`)
             return msg.channel.send(emb.setTitle("You have to wait ;-;")).catch()
-
         } else {
             profile.daily = now;
             profile.wallet += money.daily;
