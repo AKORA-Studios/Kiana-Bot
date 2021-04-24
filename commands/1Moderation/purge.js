@@ -1,4 +1,4 @@
-const { Message, TextChannel, MessageEmbed } = require('discord.js');
+const { Message, TextChannel } = require('discord.js');
 const { rawEmb, colors } = require('../utilities');
 
 module.exports = {
@@ -25,9 +25,7 @@ module.exports = {
         if (!anzahl || anzahl < 1) return msg.channel.send(emb.setColor(colors.error).setDescription("**Syntax error:** The amounbt has to be bigger than 1")).catch()
 
         anzahl = Number(anzahl)
-
         var fetched = await BigFetch(msg.channel, anzahl);
-        if (search != null) fetched = fetched.filter(m => search.includes(m));
 
         BigBulkDelete(fetched, true).catch(error => {
             emb.setTitle(`Error`)
@@ -43,7 +41,6 @@ module.exports = {
             emb.setFooter(`deleted out of them:  ${count}`)
             msg.channel.send(emb).catch()
         });
-
     }
 };
 
