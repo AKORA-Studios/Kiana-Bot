@@ -28,6 +28,6 @@ module.exports = {
         guild_config.welcomeChannel = channel.id
         await guild_config.save()
 
-        return guild_config.save().then(() => msg.channel.send(emb.setDescription(`**Welcomemessage setted for ${channel}**`)));
+        return guild_config.save().then(() => msg.channel.send(emb.setDescription(`**Welcomechannel setted for ${channel}**`)));
     }
 }

@@ -27,7 +27,7 @@ module.exports = {
         guild_config.goodbyeChannel = channel.id
         await guild_config.save()
 
-        emb.setDescription(`**Goodbyemessage setted for ${channel}**`)
+        emb.setDescription(`**Goodbyechannele setted for ${channel}**`)
         return guild_config.save().then(() => msg.channel.send(emb));
     }
 }

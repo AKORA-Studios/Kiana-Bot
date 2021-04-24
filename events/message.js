@@ -1,11 +1,11 @@
 const client = require('../index')
-const { colors, rawEmb, calcLevel, emotes, checkOwner, deatiledEmb } = require("../commands/utilities")
+const { colors, calcLevel, deatiledEmb } = require("../commands/utilities")
 const fs = require("fs");
 const { join } = require('path');
 
 const { Collection, MessageEmbed } = require("discord.js");
 const cooldowns = new Collection();
-const xpCooldown = new Collection(); //<userID, Date>
+const xpCooldown = new Collection();
 const config = client.config
 
 const { levelupCard } = require('./images')
@@ -14,14 +14,10 @@ const afkMember = new Map
 client.afkMember = afkMember;
 
 client.on('levelup', async (message, ch, neu) => {
-    if (me) {
-        let channel;
-        ch ? channel = message.guild.channels.resolve(ch) : channel = message.channel;
-
-        if (!channel) return;
-        let atach = await levelupCard(message.member, calcLevel(neu))
-        channel.send(atach).catch()
-    }
+    let channel = message.guild.channels.resolve(ch) || message.channel;
+    if (!channel) return;
+    let atach = await levelupCard(message.member, calcLevel(neu))
+    channel.send(atach).catch()
 })
 
 client.on("warn", console.log)
@@ -29,13 +25,12 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (list.includes(message.author.id)) return
     var emb = deatiledEmb(message)
-    //if (client.config.owner.includes(message.author.id)) return client.emit('levelup', message, 'eerewr', message.channel.id, 4000);
     let settings;
 
     if (message.channel.type == 'dm') {
         settings = {
             autoQuote: true,
-            prefix: '--'
+            prefix: '+'
         }
 
     } else {
@@ -63,20 +58,20 @@ client.on("message", async message => {
         if ((last + cooldownTime) < now) {
             xpCooldown.set(message.author.id, now)
 
-            let old = (await client.database.UserConfigCache.getConfig(message.author.id)).xp; //Siehe 100 Zeilen Tiefer
+            let oldLevel = (await client.database.UserConfigCache.getConfig(message.author.id)).xp;
             let zzzz = await client.database.UserConfigCache.addXP(message.author.id, message.content.length);
-            let neu = (await client.database.UserConfigCache.getConfig(message.author.id)).xp;
+            let newLevel = (await client.database.UserConfigCache.getConfig(message.author.id)).xp;
 
             let ch = settings.xpChannel
 
-            if (calcLevel(neu) > calcLevel(old)) {
-                client.emit('levelup', message, ch, neu);
+            if (calcLevel(newLevel) > calcLevel(oldLevel)) {
+                client.emit('levelup', message, ch, newLevel);
             }
         }
     }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
+
     let prefix = settings.prefix;
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //==================================================================================================================================================
     //Auto Quoting
     //==================================================================================================================================================

@@ -1,6 +1,6 @@
 const client = require('../index')
-const { colors, rawEmb, emotes } = require("../commands/utilities")
-const { welcomeImage, goodbyeImage } = require('./images')
+const { welcomeImage } = require('discord-welcome-card');
+const { MessageAttachment } = require("discord.js");
 
 let guildadd;
 client.on("guildMemberAdd", async member => {
@@ -18,5 +18,6 @@ client.on("guildMemberAdd", async member => {
     }
 
     if (!channel) return
-    channel.send(await welcomeImage(member))
+    const image = await welcomeImage(member);
+    channel.send(new MessageAttachment(image, 'welcome.png'))
 });

@@ -112,4 +112,5 @@ npm i
         "parse-ms": "^2.1.0",
         "os-utils": "0.0.14",
         "tnai": "^1.0.5",
-        "urban": "^0.3.2"
+        "urban": "^0.3.2",
+        "discord-welcome-card": "^3.7.5"

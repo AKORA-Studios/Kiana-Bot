@@ -1,5 +1,6 @@
 const client = require('../index')
-const { welcomeImage, goodbyeImage } = require('./images')
+const { goodbyeImage } = require('discord-welcome-card');
+const { MessageAttachment } = require("discord.js");
 
 client.on("guildMemberRemove", async member => {
     var settings = await client.database.GuildSettingsCache.getConfig(member.guild.id);
@@ -14,7 +15,6 @@ client.on("guildMemberRemove", async member => {
         }
     }
     if (!channel) return
-
-    channel.send(await goodbyeImage(member))
-
+    const image = await goodbyeImage(member);
+    channel.send(new MessageAttachment(image, 'goodbye.png'))
 });
