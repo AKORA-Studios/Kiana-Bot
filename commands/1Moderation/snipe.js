@@ -16,10 +16,9 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let channel = msg.channel
-        if (msg.mentions.channels.first()) channel = msg.mentions.channels.first()
-        const snipe = msg.client.snipedMessages.get(msg.channel.id)
         let emb = rawEmb(msg)
+        let channel = msg.mentions.channels.first() || msg.channel
+        const snipe = msg.client.snipedMessages.get(channel.id)
 
         if (!snipe) return msg.channel.send(emb.setColor(colors.error).setDescription('No message found qwq'))
 

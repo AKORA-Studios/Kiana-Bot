@@ -18,7 +18,6 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let guild = msg.guild;
         let role = msg.mentions.roles.first();
         let emb = rawEmb(msg)
 
@@ -29,7 +28,7 @@ module.exports = {
             var color = args[1].slice(1)
         } else { var color = args[1]; }
 
-        let x = guild.members.cache.find(m => m.id == msg.client.user.id).roles.highest;
+        let x = msg.guild.members.cache.find(m => m.id == msg.client.user.id).roles.highest;
         let y = x.comparePositionTo(role);
         if (y < 1) {
             return msg.channel.send(emb.setTitle('The role is unfortunately more powerful than me')).catch()

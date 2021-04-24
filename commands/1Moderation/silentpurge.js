@@ -18,19 +18,15 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(msg, args) {
-        let emb = rawEmb(msg)
         let anzahl = args[0]
-
         msg.delete()
         anzahl = Number(anzahl)
 
         var fetched = await BigFetch(msg.channel, anzahl);
-
         BigBulkDelete(fetched, true)
 
         var obj = { num: anzahl, guild: msg.guild, mod: msg.author.tag, channel: msg.channel, silent: true }
         msg.client.emit('botPurge', obj)
-
     }
 };
 

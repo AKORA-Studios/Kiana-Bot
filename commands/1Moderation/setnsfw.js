@@ -19,9 +19,7 @@ module.exports = {
      */
     async execute(msg, args) {
         let emb = rawEmb(msg)
-
-        var channel = msg.mentions.channels.first();
-        if (!channel) channel = msg.channel;
+        var channel = msg.mentions.channels.first() || msg.channel
         if (!channel.type == "text") return msg.channel.send(emb.setTitle("This is not a text channel qwq")).catch()
 
         if (channel.nsfw) {

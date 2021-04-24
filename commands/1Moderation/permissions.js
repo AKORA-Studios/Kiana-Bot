@@ -41,7 +41,6 @@ module.exports = {
                 } else {
                     text += emotes.false + "`" + perm.toString() + "`";
                 }
-
                 text += "\n"; //New Line
             }
             emb.addField('\u200b', text, true);

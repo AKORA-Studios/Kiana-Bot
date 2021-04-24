@@ -19,14 +19,11 @@ module.exports = {
      */
     async execute(msg, args) {
         let emb = rawEmb(msg);
-
         let victim = msg.mentions.members.first();
         if (victim.user.bot) msg.channel.send(emb.setColor(colors.error).setDescription("**Bots couldn´t recieve warnings**")).catch()
 
         let reason = "No Reason specified";
-
         if (reason.length > 1024) return msg.channel.send(emb.setColor(colors.error).setDescription("The Reason shouldn´t expand 1024 characters!")).catch()
-
         if (args[1]) {
             let text = args.slice(1).join(' ')
             reason = text
