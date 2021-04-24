@@ -18,11 +18,7 @@ module.exports = {
      */
     async execute(msg, args) {
         let emb = deatiledEmb(msg).setTitle('☆○o。Gayrate 。o○☆')
-
-        let user;
-        if (msg.mentions.users.first()) {
-            user = msg.mentions.users.first();
-        } else { user = msg.author; }
+        let user = msg.mentions.users.first() || msg.author
 
         let percent = Math.floor((user.id / Math.pow(10, 18)) * 100);
         msg.channel.send(emb.setDescription(`${user} is to ${percent}% gay! :gay_pride_flag:`)).catch()

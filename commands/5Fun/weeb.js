@@ -18,11 +18,7 @@ module.exports = {
      */
     async execute(msg, args) {
         let emb = rawEmb(msg).setTitle("*°:⋆ₓₒ Weeb Rate ₓₒ⋆:°*")
-
-        let user;
-        if (msg.mentions.users.first()) {
-            user = msg.mentions.users.first();
-        } else { user = msg.author; }
+        let user = msg.mentions.users.first() || msg.author
 
         if (!user) {
             emb.setDescription("Please enter a user to be scanned!")

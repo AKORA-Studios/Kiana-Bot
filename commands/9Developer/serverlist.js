@@ -25,12 +25,9 @@ module.exports = {
         let ids = msg.client.guilds.cache.map(g => g.id);
         let count = msg.client.guilds.cache.map(g => g.memberCount);
 
-        //let created = msg.client.guilds.cache.map(g => g.createdAt.toLocaleDateString("de-DE"));
         let joinedAt = msg.client.guilds.cache.map(g => g.joinedAt.toLocaleDateString("de-DE"));
-
         for (let i = 0; i < names.length; i++) {
             emb.addField(`**[${count[i]}] ${names[i]}**`, `\`${ids[i]}\` [${joinedAt[i]}]\n\n`)
-            //      emb.addField(`**[${count[i]}]** ${names[i]}`, ` ${ids[i]}\n${created[i]} //--\\ ${joinedAt[i]}\n\n`)
         }
 
         emb.setFooter(`${msg.client.guilds.cache.size} Server mit ${(msg.client.users.cache.size).toLocaleString()} Usern`)
