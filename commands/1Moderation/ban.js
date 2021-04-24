@@ -23,27 +23,12 @@ module.exports = {
      */
     async execute(msg, args) {
         let emb = rawEmb(msg)
-        let reason = 'Banned by ' + msg.author.tag;
+        let member = msg.mentions.members.first() || msg.guild.members.resolve(args[0])
 
-        let M,
-            user
+        if (!member) return msg.channel.send(emb.setColor(colors.error).setDescription("Please enter a user or user-id ")).catch()
+        if (!member.bannable) return msg.channel.send(emb.setColor(colors.error).setDescription("**This user is not banable**")).catch()
 
-        if (msg.mentions.members.first()) {
-            user = msg.mentions.members.first()
-            M = user
-        } else if (!isNaN(args[0])) {
-            user = msg.guild.members.resolve(args[0])
-            if (!user) {
-                user = await msg.client.users.fetch(args[0]);
-                user.user = user;
-            }
-            M = user
-        } else return msg.channel.send(emb.setColor(colors.error).setDescription("Please enter a user or user-id ")).catch()
-
-        if (M.bannable == false) return msg.channel.send(emb.setColor(colors.error).setDescription("**This user is not banable**")).catch()
-
-        await msg.guild.members.ban(user.id).catch()
-        msg.channel.send(emb.setDescription(`**Banned user**\n ${M.user.tag}`)).catch();
-
+        await msg.guild.members.ban(member.user.id).catch()
+        msg.channel.send(emb.setDescription(`**Banned user**\n ${member.user.tag}`)).catch();
     }
 };
